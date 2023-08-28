@@ -122,4 +122,40 @@ public class PasswordValidationTest {
         //THEN
         Assertions.assertFalse(result);
     }
+
+    @Test
+    void isWellKnownPassword_whenEasyPassword_expectTrue() {
+        //GIVEN
+        String password = "123456";
+
+        //WHEN
+        boolean result = PasswordValidation.isWellKnowPassword(password);
+
+        //THEN
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void isWellKnownPassword_whenEasyPassword2_expectTrue() {
+        //GIVEN
+        String password = "passwort";
+
+        //WHEN
+        boolean result = PasswordValidation.isWellKnowPassword(password);
+
+        //THEN
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void isWellKnownPassword_whenHardPassword_expectTrue() {
+        //GIVEN
+        String password = "dfkhb67lhjqavd7as>JGauq4561wvai76AGOZIsdFIAS12bgeo8";
+
+        //WHEN
+        boolean result = PasswordValidation.isWellKnowPassword(password);
+
+        //THEN
+        Assertions.assertFalse(result);
+    }
 }
