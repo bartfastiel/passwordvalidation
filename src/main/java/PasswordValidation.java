@@ -31,6 +31,16 @@ public class PasswordValidation {
         if ("passwort".equals(password)) {
             return true;
         }
+        if ("Password1".equals(password)) {
+            return true;
+        }
         return false;
+    }
+
+    public static boolean isSafe(String password) {
+        return isAtLeast8CharactersLong(password)
+                && containsLowerAndUppercaseCharacters(password)
+                && containsDigit(password)
+                && !isWellKnowPassword(password);
     }
 }

@@ -158,4 +158,64 @@ public class PasswordValidationTest {
         //THEN
         Assertions.assertFalse(result);
     }
+
+    @Test
+    void isSafe_whenEmpty_expectFalse() {
+        //GIVEN
+        String password = "";
+
+        //WHEN
+        boolean result = PasswordValidation.isSafe(password);
+
+        //THEN
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void isSafe_whenHardPassword_expectTrue() {
+        //GIVEN
+        String password = "dfkhb67lhjqavd7as>JGauq4561wvai76AGOZIsdFIAS12bgeo8";
+
+        //WHEN
+        boolean result = PasswordValidation.isSafe(password);
+
+        //THEN
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void isSafe_whenLongLowercase_expectFalse() {
+        //GIVEN
+        String password = "sdkfjbasldfkjabsdlfkjabsdflasjbdf";
+
+        //WHEN
+        boolean result = PasswordValidation.isSafe(password);
+
+        //THEN
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void isSafe_whenLongLowercaseAndUppercase_expectFalse() {
+        //GIVEN
+        String password = "abcdeABCDEFG";
+
+        //WHEN
+        boolean result = PasswordValidation.isSafe(password);
+
+        //THEN
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void isSafe_whenLongLowercaseAndUppercaseWithDigit_expectFalse() {
+        //GIVEN
+        String password = "Password1";
+
+        //WHEN
+        boolean result = PasswordValidation.isSafe(password);
+
+        //THEN
+        Assertions.assertFalse(result);
+    }
 }
