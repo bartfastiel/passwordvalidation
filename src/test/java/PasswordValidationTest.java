@@ -50,4 +50,40 @@ public class PasswordValidationTest {
         //THEN
         Assertions.assertTrue(result);
     }
+
+    @Test
+    void containsDigit_whenEmpty_expectFalse() {
+        //GIVEN
+        String password = "";
+
+        //WHEN
+        boolean result = PasswordValidation.containsDigit(password);
+
+        //THEN
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void containsDigit_whenOneDigit_expectTrue() {
+        //GIVEN
+        String password = "1";
+
+        //WHEN
+        boolean result = PasswordValidation.containsDigit(password);
+
+        //THEN
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void containsDigit_whenMixedText_expectTrue() {
+        //GIVEN
+        String password = "asldfkbalsdf14asdfasd2324sdfjhavsk";
+
+        //WHEN
+        boolean result = PasswordValidation.containsDigit(password);
+
+        //THEN
+        Assertions.assertTrue(result);
+    }
 }
